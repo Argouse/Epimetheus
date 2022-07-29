@@ -6,9 +6,11 @@
 * @author iiijr
 */
 export function watchApi() {
-  const pathAction = new Array();
+  // const pathAction = new Array();
+  console.log(history.pushState)
   history.pushState = bindHistoryEvent('pushState');
   history.pushState = bindHistoryEvent('replaceState');
+  console.log(history.pushState)
 }
 
 
@@ -29,3 +31,4 @@ function bindHistoryEvent(type) {
     return newEvent;  //返回方法，用于重写history的方法
   };
 };
+

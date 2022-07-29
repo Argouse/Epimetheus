@@ -32,7 +32,7 @@ function initSDK(opt) {
     sendPerf: true, // 是否上报页面性能
     // TODO 写了一部分模块，待补充，写模块的时候大伙们顺便添加上去
   }, opt);
-  watchApi(config);
+
 
   // TODO 监控模块执行，也是需要大伙们顺便添加上去，格式按着来就行
   config.sendPV && watchPV(config);
