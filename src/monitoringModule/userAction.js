@@ -8,13 +8,13 @@
 export function watchApi() {
   // const pathAction = new Array();
   // console.log(history.pushState)
+  console.log("into watchApi");
+  console.log('THEY DID IT AGAIN! replaceState 111111');
   window.onpopstate = function(event) {
     alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
   };
   history.pushState = bindHistoryEvent('pushState');
-  history.pushState = bindHistoryEvent('replaceState');
-  // console.log(history.length)
-  // console.log(history.state)
+  history.replaceState = bindHistoryEvent('replaceState');
   window.addEventListener('replaceState', function(e) {
     console.log('THEY DID IT AGAIN! replaceState 111111');
   });

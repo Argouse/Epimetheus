@@ -12,6 +12,7 @@ import { watchApi } from "./monitoringModule/userAction.js"
   // TODO 获取 script src 里的 query 参数
   // const params = getScriptQuery();
   initSDK();
+  console.log("into SDK");
 })();
 
 
@@ -32,11 +33,13 @@ function initSDK(opt={}) {
     sendPerf: true, // 是否上报页面性能
     // TODO 写了一部分模块，待补充，写模块的时候大伙们顺便添加上去
   }, opt);
+  console.log("into InitSDK");
+  watchApi()
 
 
   // TODO 监控模块执行，也是需要大伙们顺便添加上去，格式按着来就行
   // config.sendPV && watchPV(config);
-  config.sendApi && watchApi(config);
+  // config.sendApi && watchApi(config);
   // config.sendResource && watchResource(config);
   // config.sendError && watchError(config);
   // config.sendPerf && watchPerf(config);
