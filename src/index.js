@@ -11,7 +11,7 @@ import { watchApi } from "./monitoringModule/userAction.js"
   // getToken()
   // TODO 获取 script src 里的 query 参数
   // const params = getScriptQuery();
-  initSDK(params);
+  initSDK();
 })();
 
 
@@ -22,9 +22,9 @@ import { watchApi } from "./monitoringModule/userAction.js"
 * @return void
 * @author iiijr
 */
-function initSDK(opt) {
+function initSDK(opt={}) {
   // 内置默认参数
-  const config = assign({
+  const config = Object.assign({
     sendPV: true, // 是否上报页面 PV
     sendApi: true, // 是否上报 API 接口请求
     sendResource: true, // 是否上报资源请求
@@ -35,14 +35,14 @@ function initSDK(opt) {
 
 
   // TODO 监控模块执行，也是需要大伙们顺便添加上去，格式按着来就行
-  config.sendPV && watchPV(config);
+  // config.sendPV && watchPV(config);
   config.sendApi && watchApi(config);
-  config.sendResource && watchResource(config);
-  config.sendError && watchError(config);
-  config.sendPerf && watchPerf();
+  // config.sendResource && watchResource(config);
+  // config.sendError && watchError(config);
+  // config.sendPerf && watchPerf(config);
 
   // TODO 自定义日志上报
-  watchCustom(); 
+  // watchCustom(); 
 }
 
 

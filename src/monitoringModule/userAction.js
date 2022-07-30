@@ -7,10 +7,20 @@
 */
 export function watchApi() {
   // const pathAction = new Array();
-  console.log(history.pushState)
+  // console.log(history.pushState)
+  window.onpopstate = function(event) {
+    alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+  };
   history.pushState = bindHistoryEvent('pushState');
   history.pushState = bindHistoryEvent('replaceState');
-  console.log(history.pushState)
+  // console.log(history.length)
+  // console.log(history.state)
+  window.addEventListener('replaceState', function(e) {
+    console.log('THEY DID IT AGAIN! replaceState 111111');
+  });
+  window.addEventListener('pushState', function(e) {
+    console.log('THEY DID IT AGAIN! pushState 2222222');
+  });
 }
 
 
