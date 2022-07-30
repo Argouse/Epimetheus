@@ -9,8 +9,22 @@
 </head>
 <body>
   <button>测试导入是否成功</button>
+  <button onclick="testReplaceState()">测试replaceState</button>
+  <button onclick="testPushState()">测试pushState</button>
+  <button >测试导入是否成功</button>
 </body> 
 <script>
-
+function testPushState() {
+  console.log("testPushState")
+  const stateObj = { foo: "pushBar" };
+  history.pushState(stateObj, "page 1", "pushBar.html");
+  
+}
+function testReplaceState() {
+  console.log("testReplaceState")
+  const stateObj = { foo: "replaceBar" };
+  history.replaceState(stateObj, "page 2", "replaceBar.html");
+  
+}
 </script>
 </html>
