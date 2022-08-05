@@ -1,12 +1,13 @@
 scrape_configs:
   - job_name: 'prometheus'
+    honor_labels: true
     scrape_interval: 5s
 
     static_configs:
       - targets: [
-        'app:8080',
+        'pushgateway:9091',
       ]
-        labels:
-          service: 'app-exporter'
-          group: 'testing'
-          name: 'app-exporter'
+        # labels:
+        #   service: 'app-exporter'
+        #   group: 'testing'
+        #   name: 'app-exporter'

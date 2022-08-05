@@ -1,5 +1,11 @@
 version: '3'
 services:
+  pushgateway:
+    image: prom/pushgateway:latest
+    hostname: pushgateway
+    ports:
+      - '9091:9091'
+    restart: always
   prometheus:
     image: prom/prometheus:latest
     hostname: prometheus
@@ -20,20 +26,20 @@ services:
       - ./grafana/config.ini:/etc/grafana/config.ini
       - ./grafana/dashboards:/var/lib/grafana/dashboards
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=illchangeitanyway
+      - GF_SECURITY_ADMIN_PASSWORD=admin
     depends_on:
       - prometheus
     ports:
       - '3000:3000'
     restart: always
-  app:
-    build:
-      context: ./app
-      dockerfile: Dockerfile
-    ports:
-      - '8080:8080'
-    command: 'index.js'
-    restart: always
+  # app:
+  #   build:
+  #     context: ./app
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - '8080:8080'
+  #   command: 'index.js'
+  #   restart: always
 
 volumes:
   prometheus_data: {}
