@@ -41,5 +41,15 @@ router.post("/metrics", async (req, res, next) => {
   }
 });
 
+router.get("/metrics", async (req, res, next) => {
+  try {
+    // 处理请求
+    res.send("post /test");
+  } catch (err) {
+    next(err);
+  }
+});
+
+
 
 module.exports = router;
