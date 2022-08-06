@@ -10,3 +10,10 @@
 ├── util	# 工具模块
 └── app.js	# 用于自定义启动时的初始化工作
 ```
+
+## 运行
+```
+npm install
+cp config/config.default.js config/config.js
+npm run start
+```

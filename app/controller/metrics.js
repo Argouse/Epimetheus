@@ -1,4 +1,4 @@
-const config = require('../config/config.default.js');
+const config = require('../config/config.js');
 const client = require('prom-client');
 const http = require('http');
 
@@ -17,18 +17,6 @@ let gateway = new client.Pushgateway(config.pushgateway.url, {
         maxSockets: 5,
     }),
 }, register);
-
-
-// // TODO Authentication 用户登录  暂时开放全部接口
-// // exports.login = async (req, res, next) => {
-// //   try {
-// //     // 处理请求
-// //     res.send("post /users/login");
-// //   } catch (err) {
-// //     next(err);
-// //   }
-// // };
-
 
 let calculateBonus = (funcName ,funcParam) => {
   for(const func of Object.keys(typeArr)) {
