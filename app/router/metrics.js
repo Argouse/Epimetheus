@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 
 
-router.post("/", async (req, res, next) => {
+router.post("/report", async (req, res, next) => {
     try {
         // 处理请求
         if (req.body.reportid != '114514') {
@@ -16,7 +16,19 @@ router.post("/", async (req, res, next) => {
     }
 });
 
+router.post("/init", async (req, res, next) => {
+    try {
+        // 处理请求
+        if (req.body.reportid != '114514') {
+          return res.json({ code: '403', message: '无权限' });
+        }
+        // 初始化
+        return res.json({ code: '200', message: 'to be continued' });
 
+    } catch (err) {
+        next(err);
+    }
+});
 
 
 module.exports = router;
