@@ -1,7 +1,7 @@
 datasources:
 - name: 'prometheus-monitoring-1'
   type: 'prometheus'
-  access: 'Server'
+  access: 'proxy'
   org_id: 1
   url: 'http://prometheus:9090'
   is_default: true
