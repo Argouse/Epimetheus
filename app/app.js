@@ -5,7 +5,7 @@ const express = require("express")
 
 const app = express()
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3030
 
 // 挂载统一处理服务端错误中间件
 app.use(errorHandler());

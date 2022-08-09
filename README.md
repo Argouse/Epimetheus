@@ -8,12 +8,17 @@ dev branch
 - jwt for grafana authentication (multiple users)
 
 ## Commands
-- sudo docker-compose build # build the image
-- sudo docker-compose up -d # start the server
-- sudo docker-compose up -d --force-recreate # to restart the containers
-- sudo docker-compose down # stop the server
+- `cp example.env .env && vim .env` # edit the docker-cluster config
+- `sudo sysctl -w vm.max_map_count=262144` # freedom the es
+- `sudo docker-compose build` # build the image
+- `sudo docker-compose up -d` # start the docker-cluster
+- `sudo docker-compose up -d` --force-recreate # to restart the containers
+- `sudo docker-compose down` # stop the docker-cluster
+- `cp app\config\config.default.js app\config\config.js && vim app\config\config.js` # edit the backend config
+- `npm run start` or `npm run dev` # start the backend
 
-## Endpoints
+## Endpoints(default)
 - http://localhost:9090 # prometheus
 - http://localhost:9191 # pushgateway
-- http://localhost:3000 # grafana credential: admin/admin
+- http://localhost:3000 # grafana credential: admin/PASSWORD
+- http://localhost:3030/metrics/report # nodejs backend
