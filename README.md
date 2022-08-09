@@ -9,7 +9,6 @@ dev branch
 
 ## Commands
 - `cp example.env .env && vim .env` # edit the docker-cluster config
-- `sudo sysctl -w vm.max_map_count=262144` # freedom the es
 - `sudo docker-compose build` # build the image
 - `sudo docker-compose up -d` # start the docker-cluster
 - `sudo docker-compose up -d` --force-recreate # to restart the containers
