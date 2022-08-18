@@ -136,6 +136,11 @@ interfaceError = async (req, res, next) => {
   res.json({ code: '200', message: 'success' });
 }
 
+replay = async (req, res, next) => {
+  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'replay' , 'reportid': req.body.reportid, 'pageurl': req.body.data.pageUrl } });
+  res.json({ code: '200', message: 'success' });
+}
+
 const typeArr = {  // TODO 处理策略
   "pageStay": pageStay,
   "blankScreenError": blankScreenError,
@@ -143,7 +148,8 @@ const typeArr = {  // TODO 处理策略
   "jsError": jsError,
   "loadingError": loadingError,
   "unhandledError": unhandledError,
-  "interfaceError": interfaceError
+  "interfaceError": interfaceError,
+  "replay": replay
 }
 
 module.exports = { calculateBonus };

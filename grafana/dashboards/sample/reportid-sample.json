@@ -24,10 +24,244 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 6,
+  "id": 7,
   "links": [],
   "liveNow": false,
   "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 8,
+      "panels": [],
+      "title": "异常分析",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "builder",
+          "expr": "sum(count_over_time({job=\"epimetheus\", reportid=\"$reportid\", type=\"jsError\"} |= `` [$__interval]))",
+          "legendFormat": "js错误",
+          "queryType": "range",
+          "refId": "jsError"
+        }
+      ],
+      "title": "异常数量",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 12,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "9.0.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "code",
+          "expr": "sum(count_over_time({job=\"epimetheus\", reportid=\"$reportid\", type=\"jsError\"} |= `` [$__interval]))",
+          "legendFormat": "js错误",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Panel Title",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "P74691467E56A828C"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.6",
+      "title": "Panel Title",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 6,
+      "panels": [],
+      "title": "页面性能",
+      "type": "row"
+    },
     {
       "datasource": {
         "type": "prometheus",
@@ -89,7 +323,7 @@
         "h": 18,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 18
       },
       "id": 2,
       "interval": "",
@@ -117,8 +351,8 @@
             "type": "prometheus",
             "uid": "P74691467E56A828C"
           },
-          "editorMode": "code",
-          "expr": "pagePerformance{job=\"$reportid\",type=\"FP\"}",
+          "editorMode": "builder",
+          "expr": "pagePerformance{job=\"$reportid\", type=\"FP\"}",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 1,
@@ -247,7 +481,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 18
       },
       "id": 4,
       "links": [],
@@ -273,7 +507,7 @@
             "type": "prometheus",
             "uid": "P74691467E56A828C"
           },
-          "expr": "pageStay{job=\"114514\"}",
+          "expr": "pageStay{job=\"$reportid\"}",
           "format": "time_series",
           "instant": false,
           "intervalFactor": 1,
@@ -345,7 +579,7 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 27
       },
       "id": 3,
       "links": [],
@@ -397,7 +631,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -427,7 +661,7 @@
   },
   "timezone": "",
   "title": "reportid-sample",
-  "uid": "7xGxX_m4k",
-  "version": 3,
+  "uid": "BOIiq_i4k",
+  "version": 6,
   "weekStart": ""
 }
