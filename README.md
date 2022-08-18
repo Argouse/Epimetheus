@@ -19,5 +19,6 @@ dev branch
 ## Endpoints(default)
 - http://localhost:9090 # prometheus
 - http://localhost:9191 # pushgateway
+- http://localhost:3100 # loki
 - http://localhost:3000 # grafana credential: admin/PASSWORD
 - http://localhost:3030/metrics/report # nodejs backend

@@ -4,3 +4,4 @@
   type: 'file'          # type of dashboard description (json files)
   options:
     folder: '/var/lib/grafana/dashboards'       # where dashboards are
+    foldersFromFilesStructure: true

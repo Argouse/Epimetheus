@@ -17,6 +17,17 @@ services:
     ports:
       - '9090:9090'
     restart: always
+  loki:
+    image: grafana/loki:latest
+    hostname: loki
+    volumes:
+      - loki_data:/loki
+      - ./loki/loki-docker-config.yml:/etc/loki/loki-docker-config.yml
+    command: 
+      - '--config.file=/etc/loki/loki-docker-config.yml'
+    ports:
+      - '3100:3100'
+    restart: always
   grafana:
     image: grafana/grafana:latest
     hostname: grafana
@@ -43,4 +54,5 @@ services:
 
 volumes:
   prometheus_data: {}
+  loki_data: {}
   grafana_data: {}
