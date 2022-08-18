@@ -1,42 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS-1",
-      "label": "prometheus-1",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    },
-    {
-      "name": "VAR_REPORTID",
-      "type": "constant",
-      "label": "reportid",
-      "value": "114514",
-      "description": ""
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "9.0.6"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -62,14 +24,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 6,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS-1}"
+        "uid": "P74691467E56A828C"
       },
       "description": "",
       "fieldConfig": {
@@ -153,7 +115,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS-1}"
+            "uid": "P74691467E56A828C"
           },
           "editorMode": "code",
           "expr": "pagePerformance{job=\"$reportid\",type=\"FP\"}",
@@ -166,7 +128,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS-1}"
+            "uid": "P74691467E56A828C"
           },
           "expr": "pagePerformance{job=\"$reportid\",type=\"FCP\"}",
           "format": "time_series",
@@ -177,7 +139,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS-1}"
+            "uid": "P74691467E56A828C"
           },
           "expr": "pagePerformance{job=\"$reportid\",type=\"DNS\"}",
           "format": "time_series",
@@ -190,7 +152,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS-1}"
+            "uid": "P74691467E56A828C"
           },
           "expr": "pagePerformance{job=\"$reportid\",type=\"DOMready\"}",
           "format": "time_series",
@@ -201,7 +163,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS-1}"
+            "uid": "P74691467E56A828C"
           },
           "expr": "pagePerformance{job=\"$reportid\",type=\"TCPduration\"}",
           "format": "time_series",
@@ -212,7 +174,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS-1}"
+            "uid": "P74691467E56A828C"
           },
           "expr": "pagePerformance{job=\"$reportid\",type=\"requestTime\"}",
           "format": "time_series",
@@ -227,7 +189,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS-1}"
+        "uid": "P74691467E56A828C"
       },
       "description": "",
       "fieldConfig": {
@@ -309,7 +271,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS-1}"
+            "uid": "P74691467E56A828C"
           },
           "expr": "pageStay{job=\"114514\"}",
           "format": "time_series",
@@ -325,7 +287,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS-1}"
+        "uid": "P74691467E56A828C"
       },
       "description": "",
       "fieldConfig": {
@@ -405,7 +367,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS-1}"
+            "uid": "P74691467E56A828C"
           },
           "expr": "blankScreenError{job=\"114514\"}",
           "format": "time_series",
@@ -428,21 +390,9 @@
       {
         "hide": 2,
         "name": "reportid",
-        "query": "${VAR_REPORTID}",
+        "query": "114514",
         "skipUrlSync": false,
-        "type": "constant",
-        "current": {
-          "value": "${VAR_REPORTID}",
-          "text": "${VAR_REPORTID}",
-          "selected": false
-        },
-        "options": [
-          {
-            "value": "${VAR_REPORTID}",
-            "text": "${VAR_REPORTID}",
-            "selected": false
-          }
-        ]
+        "type": "constant"
       }
     ]
   },
@@ -477,7 +427,7 @@
   },
   "timezone": "",
   "title": "reportid-sample",
-  "uid": "urEx9ZmVz",
-  "version": 6,
+  "uid": "7xGxX_m4k",
+  "version": 3,
   "weekStart": ""
 }

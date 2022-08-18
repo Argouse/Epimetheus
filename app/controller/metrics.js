@@ -1,9 +1,10 @@
 const config = require('../config/config.js');
 const client = require('prom-client');
 const http = require('http');
+const winston = require('winston')
+const LokiTransport = require("winston-loki");
 
 const register = new client.Registry();
-
 let gateway = new client.Pushgateway(config.pushgateway.url, {
   timeout: 5000, //Set the request timeout to 5000ms
   agent: new http.Agent({
@@ -12,6 +13,17 @@ let gateway = new client.Pushgateway(config.pushgateway.url, {
     maxSockets: 5,
   }),
 }, register);
+
+const logger = winston.createLogger({
+  format: winston.format.json(),
+  transports: [
+    new LokiTransport({
+      host: config.loki.url,
+      json: true,
+      labels: { job: 'epimetheus' }
+    })
+  ]
+});
 
 let calculateBonus = (funcName, funcParam) => {
   for (const func of Object.keys(typeArr)) {
@@ -93,20 +105,35 @@ performanceInfo = async (req, res, next) => {
   res.json({ code: '200', message: 'success' });
 }
 
-jsError = async (req, res, next) => { // TODO
-
+// {
+//   "reportid": "114514",
+//   "type": "jsError",
+//   "data": {
+//       "errorMessage": "Uncaught TypeError: a.split is not a function",
+//       "pageUrl": "http://127.0.0.1:5500/demoPage/",
+//       "errorPosition": "27,15",
+//       "errorStack": "TypeError: a.split is not a function\n    at codeError (http://127.0.0.1:5500/demoPage/:27:15)\n    at HTMLButtonElement.onclick (http://127.0.0.1:5500/demoPage/:15:48)",
+//       "timeStamp": 1659854154590
+//   }
+// }
+jsError = async (req, res, next) => {
+  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'jsError' , 'reportid': req.body.reportid, 'pageurl': req.body.data.pageUrl } });
+  res.json({ code: '200', message: 'success' });
 }
 
-loadingError = async (req, res, next) => { // TODO
-
+loadingError = async (req, res, next) => {
+  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'loadingError' , 'reportid': req.body.reportid, 'pageurl': req.body.data.pageUrl } });
+  res.json({ code: '200', message: 'success' });
 }
 
-unhandledError = async (req, res, next) => { // TODO
-
+unhandledError = async (req, res, next) => {
+  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'unhandledError' , 'reportid': req.body.reportid, 'pageurl': req.body.data.pageUrl } });
+  res.json({ code: '200', message: 'success' });
 }
 
-interfaceError = async (req, res, next) => { // TODO
-
+interfaceError = async (req, res, next) => {
+  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'interfaceError' , 'reportid': req.body.reportid, 'pageurl': req.body.data.pageUrl } });
+  res.json({ code: '200', message: 'success' });
 }
 
 const typeArr = {  // TODO 处理策略

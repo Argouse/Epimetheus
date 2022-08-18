@@ -4,6 +4,8 @@ module.exports = {
     // pushgateway
     pushgateway: {
         url: 'http://127.0.0.1:9091'
+    },
+    loki: {
+        url: 'http://127.0.0.1:3100'
     }
 };
-  
