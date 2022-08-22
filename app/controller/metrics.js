@@ -20,12 +20,12 @@ const logger = winston.createLogger({
     new LokiTransport({
       host: config.loki.url,
       json: true,
-      labels: { job: 'epimetheus' }
+      labels: { job: 'epimetheus-metric' }
     })
   ]
 });
 
-let calculateBonus = (funcName, funcParam) => {
+let metricsFunc = (funcName, funcParam) => {
   for (const func of Object.keys(typeArr)) {
     if (funcName === func) {
       return typeArr[funcName](...funcParam);
@@ -136,11 +136,6 @@ interfaceError = async (req, res, next) => {
   res.json({ code: '200', message: 'success' });
 }
 
-replay = async (req, res, next) => {
-  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'replay' , 'reportid': req.body.reportid, 'pageurl': req.body.data.pageUrl } });
-  res.json({ code: '200', message: 'success' });
-}
-
 const typeArr = {  // TODO 处理策略
   "pageStay": pageStay,
   "blankScreenError": blankScreenError,
@@ -148,8 +143,7 @@ const typeArr = {  // TODO 处理策略
   "jsError": jsError,
   "loadingError": loadingError,
   "unhandledError": unhandledError,
-  "interfaceError": interfaceError,
-  "replay": replay
+  "interfaceError": interfaceError
 }
 
-module.exports = { calculateBonus };
+module.exports = { metricsFunc };

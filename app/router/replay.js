@@ -1,4 +1,4 @@
-const { metricsFunc } = require('../controller/metrics.js');
+const { replayFunc } = require('../controller/replay.js')
 const config = require('../config/config.js');
 const express = require("express");
 const router = express.Router();
@@ -10,7 +10,7 @@ router.post("/report", async (req, res, next) => {
         if (req.body.reportid != '114514') {
           return res.json({ code: '403', message: '无权限' });
         }
-        metricsFunc(req.body.type, [req, res, next])
+        replayFunc(req.body.type, [req, res, next])
     } catch (err) {
         next(err);
     }

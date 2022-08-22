@@ -30,6 +30,8 @@ app.use(express.json());
 
 const metricsRouter = require("./router/metrics");
 app.use("/metrics", metricsRouter);
+const replayRouter = require("./router/replay");
+app.use("/replay", replayRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
