@@ -5,7 +5,7 @@ const express = require("express")
 
 const app = express()
 
-const PORT = process.env.PORT || 3030
+const PORT = process.env.PORT || 3002
 
 const cors = require("cors")
 

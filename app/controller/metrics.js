@@ -51,6 +51,7 @@ const gaugePageStay = new client.Gauge({
 pageStay = async (req, res, next) => {
   gaugePageStay.labels({ pageurl: req.body.data.pageUrl }).set(Number(req.body.data.time));
   gateway.pushAdd({ jobName: req.body.reportid }, (err, resp, body) => { });
+  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'pageStay' , 'reportid': req.body.reportid, 'pageurl': req.body.data.pageUrl } });
   res.json({ code: '200', message: 'success' });
 }
 
@@ -72,6 +73,7 @@ const gaugeBlankScreenError = new client.Gauge({
 blankScreenError = async (req, res, next) => { // TODO
   gaugeBlankScreenError.labels({ pageurl: req.body.data.pageUrl }).set(Number(req.body.data.whiteScreenDOMNums));
   gateway.pushAdd({ jobName: req.body.reportid }, (err, resp, body) => { });
+  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'blankScreenError' , 'reportid': req.body.reportid, 'pageurl': req.body.data.pageUrl } });
   res.json({ code: '200', message: 'success' });
 }
 
@@ -102,6 +104,7 @@ performanceInfo = async (req, res, next) => {
   gaugePerformanceInfo.labels({pageurl: req.body.data.pageUrl, type: 'TCPduration'}).set(Number(req.body.data.TCPduration));
   gaugePerformanceInfo.labels({pageurl: req.body.data.pageUrl, type: 'requestTime'}).set(Number(req.body.data.requestTime));
   gateway.pushAdd({ jobName: req.body.reportid }, (err, resp, body) => { });
+  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'performanceInfo' , 'reportid': req.body.reportid, 'pageurl': req.body.data.pageUrl } });
   res.json({ code: '200', message: 'success' });
 }
 
