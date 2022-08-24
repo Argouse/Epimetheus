@@ -1,22 +1,5 @@
 version: '3'
 services:
-  pushgateway:
-    image: prom/pushgateway:latest
-    hostname: pushgateway
-    ports:
-      - '9091:9091'
-    restart: always
-  prometheus:
-    image: prom/prometheus:latest
-    hostname: prometheus
-    volumes:
-      - prometheus_data:/prometheus
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-    ports:
-      - '9090:9090'
-    restart: always
   loki:
     image: grafana/loki:latest
     hostname: loki
@@ -39,7 +22,7 @@ services:
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
     depends_on:
-      - prometheus
+      - loki
     ports:
       - '3000:3000'
     restart: always
@@ -53,6 +36,5 @@ services:
   #   restart: always
 
 volumes:
-  prometheus_data: {}
   loki_data: {}
   grafana_data: {}
