@@ -306,6 +306,7 @@
             "sum"
           ],
           "fields": "",
+          "limit": 10,
           "values": false
         },
         "showUnfilled": true,
@@ -318,8 +319,8 @@
             "type": "loki",
             "uid": "PBDC956B9AC850F36"
           },
-          "editorMode": "builder",
-          "expr": "sum by(pageurl) (count_over_time({reportid=\"$reportid\", type=\"pageStay\"} [$__interval]))",
+          "editorMode": "code",
+          "expr": "count_over_time({reportid=\"$reportid\", type=\"pageStay\"} [$__interval])",
           "legendFormat": "{{pageurl}}",
           "queryType": "range",
           "refId": "A"
@@ -329,7 +330,7 @@
       "type": "bargauge"
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -337,170 +338,170 @@
         "y": 17
       },
       "id": 6,
-      "panels": [],
-      "title": "页面性能",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "loki",
-        "uid": "PBDC956B9AC850F36"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
+      "panels": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
           },
-          "custom": {
-            "axisLabel": "时间 (ms)",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 15,
-            "gradientMode": "hue",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
+          "description": "",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "时间 (ms)",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 15,
+                "gradientMode": "hue",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "smooth",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "always",
+                "spanNulls": true,
+                "stacking": {
+                  "group": "A",
+                  "mode": "normal"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
             },
-            "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 14,
+            "w": 24,
+            "x": 0,
+            "y": 10
+          },
+          "id": 23,
+          "interval": "",
+          "links": [],
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "mean",
+                "max",
+                "min"
+              ],
+              "displayMode": "table",
+              "placement": "right"
             },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "always",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "normal"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
+            "tooltip": {
+              "mode": "multi",
+              "sort": "none"
             }
           },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
+          "pluginVersion": "9.0.6",
+          "targets": [
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "PBDC956B9AC850F36"
               },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 14,
-        "w": 24,
-        "x": 0,
-        "y": 18
-      },
-      "id": 23,
-      "interval": "",
-      "links": [],
-      "options": {
-        "legend": {
-          "calcs": [
-            "lastNotNull",
-            "mean",
-            "max",
-            "min"
+              "editorMode": "code",
+              "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap FP | __error__=`` [$__interval]))",
+              "legendFormat": "FP",
+              "queryType": "range",
+              "refId": "FP"
+            },
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "PBDC956B9AC850F36"
+              },
+              "editorMode": "code",
+              "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap FCP | __error__=`` [$__interval]))",
+              "hide": false,
+              "legendFormat": "FCP",
+              "queryType": "range",
+              "refId": "FCP"
+            },
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "PBDC956B9AC850F36"
+              },
+              "editorMode": "code",
+              "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap DOMready | __error__=`` [$__interval]))",
+              "hide": false,
+              "legendFormat": "DOMready",
+              "queryType": "range",
+              "refId": "DOMready"
+            },
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "PBDC956B9AC850F36"
+              },
+              "editorMode": "code",
+              "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap requestTime | __error__=`` [$__interval]))",
+              "hide": false,
+              "legendFormat": "requestTime",
+              "queryType": "range",
+              "refId": "requestTime"
+            },
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "PBDC956B9AC850F36"
+              },
+              "editorMode": "code",
+              "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap TCPduration | __error__=`` [$__interval]))",
+              "hide": false,
+              "legendFormat": "TCPduration",
+              "queryType": "range",
+              "refId": "TCPduration"
+            },
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "PBDC956B9AC850F36"
+              },
+              "editorMode": "code",
+              "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap DNS | __error__=`` [$__interval]))",
+              "hide": false,
+              "legendFormat": "DNS",
+              "queryType": "range",
+              "refId": "DNS"
+            }
           ],
-          "displayMode": "table",
-          "placement": "right"
-        },
-        "tooltip": {
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "9.0.6",
-      "targets": [
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "editorMode": "code",
-          "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap FP | __error__=`` [$__interval]))",
-          "legendFormat": "FP",
-          "queryType": "range",
-          "refId": "FP"
-        },
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "editorMode": "code",
-          "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap FCP | __error__=`` [$__interval]))",
-          "hide": false,
-          "legendFormat": "FCP",
-          "queryType": "range",
-          "refId": "FCP"
-        },
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "editorMode": "code",
-          "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap DOMready | __error__=`` [$__interval]))",
-          "hide": false,
-          "legendFormat": "DOMready",
-          "queryType": "range",
-          "refId": "DOMready"
-        },
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "editorMode": "code",
-          "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap requestTime | __error__=`` [$__interval]))",
-          "hide": false,
-          "legendFormat": "requestTime",
-          "queryType": "range",
-          "refId": "requestTime"
-        },
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "editorMode": "code",
-          "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap TCPduration | __error__=`` [$__interval]))",
-          "hide": false,
-          "legendFormat": "TCPduration",
-          "queryType": "range",
-          "refId": "TCPduration"
-        },
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "editorMode": "code",
-          "expr": "min(sum_over_time({reportid=\"$reportid\", type=\"performanceInfo\"} | json | unwrap DNS | __error__=`` [$__interval]))",
-          "hide": false,
-          "legendFormat": "DNS",
-          "queryType": "range",
-          "refId": "DNS"
+          "title": "页面关键性能",
+          "type": "timeseries"
         }
       ],
-      "title": "页面关键性能",
-      "type": "timeseries"
+      "title": "页面性能",
+      "type": "row"
     },
     {
       "collapsed": true,
@@ -508,7 +509,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 32
+        "y": 18
       },
       "id": 8,
       "panels": [
@@ -544,8 +545,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -560,7 +560,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 33
+            "y": 3
           },
           "id": 10,
           "options": {
@@ -699,8 +699,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -716,7 +715,7 @@
             "h": 6,
             "w": 12,
             "x": 0,
-            "y": 41
+            "y": 11
           },
           "id": 3,
           "links": [],
@@ -798,8 +797,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -815,7 +813,7 @@
             "h": 6,
             "w": 12,
             "x": 12,
-            "y": 41
+            "y": 11
           },
           "id": 26,
           "links": [],
@@ -897,8 +895,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -914,7 +911,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 47
+            "y": 17
           },
           "id": 29,
           "links": [],
@@ -996,8 +993,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1013,7 +1009,7 @@
             "h": 6,
             "w": 12,
             "x": 0,
-            "y": 55
+            "y": 25
           },
           "id": 27,
           "links": [],
@@ -1095,8 +1091,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1112,7 +1107,7 @@
             "h": 6,
             "w": 12,
             "x": 12,
-            "y": 55
+            "y": 25
           },
           "id": 28,
           "links": [],
@@ -1156,10 +1151,159 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 19
       },
       "id": 25,
-      "panels": [],
+      "panels": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 12,
+            "x": 0,
+            "y": 4
+          },
+          "id": 31,
+          "options": {
+            "dedupStrategy": "none",
+            "enableLogDetails": true,
+            "prettifyLogMessage": false,
+            "showCommonLabels": true,
+            "showLabels": false,
+            "showTime": true,
+            "sortOrder": "Descending",
+            "wrapLogMessage": false
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "PBDC956B9AC850F36"
+              },
+              "editorMode": "builder",
+              "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"jsError\"} | json | __error__=``",
+              "queryType": "range",
+              "refId": "A"
+            }
+          ],
+          "title": "jsError",
+          "type": "logs"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 12,
+            "x": 12,
+            "y": 4
+          },
+          "id": 33,
+          "options": {
+            "dedupStrategy": "none",
+            "enableLogDetails": true,
+            "prettifyLogMessage": false,
+            "showCommonLabels": true,
+            "showLabels": false,
+            "showTime": true,
+            "sortOrder": "Descending",
+            "wrapLogMessage": false
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "PBDC956B9AC850F36"
+              },
+              "editorMode": "builder",
+              "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"loadingError\"} | json | __error__=``",
+              "queryType": "range",
+              "refId": "A"
+            }
+          ],
+          "title": "loadingError",
+          "type": "logs"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 12,
+            "x": 0,
+            "y": 16
+          },
+          "id": 34,
+          "options": {
+            "dedupStrategy": "none",
+            "enableLogDetails": true,
+            "prettifyLogMessage": false,
+            "showCommonLabels": true,
+            "showLabels": false,
+            "showTime": true,
+            "sortOrder": "Descending",
+            "wrapLogMessage": false
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "PBDC956B9AC850F36"
+              },
+              "editorMode": "builder",
+              "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"unhandledError\"} | json | __error__=``",
+              "queryType": "range",
+              "refId": "A"
+            }
+          ],
+          "title": "unhandledError",
+          "type": "logs"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "gridPos": {
+            "h": 12,
+            "w": 12,
+            "x": 12,
+            "y": 16
+          },
+          "id": 32,
+          "options": {
+            "dedupStrategy": "none",
+            "enableLogDetails": true,
+            "prettifyLogMessage": false,
+            "showCommonLabels": true,
+            "showLabels": false,
+            "showTime": true,
+            "sortOrder": "Descending",
+            "wrapLogMessage": false
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "loki",
+                "uid": "PBDC956B9AC850F36"
+              },
+              "editorMode": "builder",
+              "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"interfaceError\"} | json | __error__=``",
+              "queryType": "range",
+              "refId": "A"
+            }
+          ],
+          "title": "interfaceError",
+          "type": "logs"
+        }
+      ],
       "title": "日志查询",
       "type": "row"
     }
@@ -1180,7 +1324,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {
@@ -1211,6 +1355,6 @@
   "timezone": "",
   "title": "reportid-sample",
   "uid": "BOIiq_i4k",
-  "version": 15,
+  "version": 18,
   "weekStart": ""
 }
