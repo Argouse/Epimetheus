@@ -9,7 +9,9 @@
 <p align="center">
     通过 Docker 整合 Node.js 数据服务、时间序列数据库 Loki 与可视化面板 Grafana
 </p>
+&nbsp;
 
+[简体中文](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
 ## Warning
 This is an experimental project, please do not use it in a production environment.
