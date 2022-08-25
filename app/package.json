@@ -1,8 +1,8 @@
 {
-  "name": "app",
+  "name": "epimetheus-app",
   "version": "1.0.0",
-  "description": "```\r bin：可执行文件。里面包含了一个启动文件 www 默认监听端口是 3000。\r public：静态文件。用来存放项目静态文件目录如js,css以及图片。\r routes：路由文件。路由主要定义 url 和 资源 的映射关系 ( 一一对应关系 ),\r 主要用来接收前端发送的请求 响应数据给前端\r views：后端模版文件。\r app.js：入口文件。\r package.json：工程信息和模块依赖。\r ```",
-  "main": "index.js",
+  "description": "Epimetheus",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",

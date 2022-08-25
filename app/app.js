@@ -1,6 +1,5 @@
 const errorHandler = require("./middleware/error-handler");
 
-
 const express = require("express")
 
 const app = express()
