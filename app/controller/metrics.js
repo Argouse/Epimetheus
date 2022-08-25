@@ -98,6 +98,16 @@ interfaceError = async (req, res, next) => {
   res.json({ code: '200', message: 'success' });
 }
 
+allTrace = async (req, res, next) => {
+  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'allTrace' , 'reportid': req.body.reportid } });
+  res.json({ code: '200', message: 'success' });
+}
+
+successRate = async (req, res, next) => {
+  logger.info({ message: JSON.stringify(req.body.data), labels: {'type': 'successRate' , 'reportid': req.body.reportid } });
+  res.json({ code: '200', message: 'success' });
+}
+
 const typeArr = {  // TODO 处理策略
   "pageStay": pageStay,
   "blankScreenError": blankScreenError,
@@ -105,7 +115,9 @@ const typeArr = {  // TODO 处理策略
   "jsError": jsError,
   "loadingError": loadingError,
   "unhandledError": unhandledError,
-  "interfaceError": interfaceError
+  "interfaceError": interfaceError,
+  "allTrace": allTrace,
+  "successRate": successRate
 }
 
 module.exports = { metricsFunc };
