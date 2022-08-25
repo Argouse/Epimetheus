@@ -8,8 +8,6 @@ services:
       - ./loki/loki-docker-config.yml:/etc/loki/loki-docker-config.yml
     command: 
       - '--config.file=/etc/loki/loki-docker-config.yml'
-    ports:
-      - '3100:3100'
     restart: always
   grafana:
     image: grafana/grafana:latest
@@ -24,7 +22,7 @@ services:
     depends_on:
       - loki
     ports:
-      - '3000:3000'
+      - '3000:${GRAFANA_PORT}'
     restart: always
   app:
     build:
