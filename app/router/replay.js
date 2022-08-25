@@ -28,7 +28,7 @@ router.post("/reportDOMevent", async (req, res, next) => {
         if (req.body.reportid != config.reportid) {
           return res.json({ code: '403', message: '无权限' });
         }
-        if (req.body.type === "originInfo"){
+        if (req.body.data.type === "originInfo"){
             replayData = [];
         }
         replayData.push(req.body.data);
