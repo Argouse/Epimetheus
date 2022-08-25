@@ -624,7 +624,7 @@
       "type": "logs"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -632,806 +632,798 @@
         "y": 41
       },
       "id": 8,
-      "panels": [
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "fillOpacity": 80,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineWidth": 1,
-                "scaleDistribution": {
-                  "type": "linear"
-                }
-              },
-              "decimals": 0,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 42
-          },
-          "id": 10,
-          "options": {
-            "barRadius": 0,
-            "barWidth": 1,
-            "groupWidth": 0.6,
-            "legend": {
-              "calcs": [
-                "sum",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "right"
-            },
-            "orientation": "vertical",
-            "showValue": "auto",
-            "stacking": "none",
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            },
-            "xField": "Time",
-            "xTickLabelRotation": 0,
-            "xTickLabelSpacing": -100
-          },
-          "pluginVersion": "9.0.6",
-          "targets": [
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "sum(count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"jsError\"} [$__interval]))",
-              "legendFormat": "jsError",
-              "queryType": "range",
-              "refId": "jsError"
-            },
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "sum(count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"loadingError\"} [$__interval]))",
-              "hide": false,
-              "legendFormat": "loadingError",
-              "queryType": "range",
-              "refId": "loadingError"
-            },
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "sum(count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"unhandledError\"} [$__interval]))",
-              "hide": false,
-              "legendFormat": "unhandledError",
-              "queryType": "range",
-              "refId": "unhandledError"
-            },
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "sum(count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"interfaceError\"} [$__interval]))",
-              "hide": false,
-              "legendFormat": "interfaceError",
-              "queryType": "range",
-              "refId": "interfaceError"
-            },
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "sum(count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"blankScreenError\"} [$__interval]))",
-              "hide": false,
-              "legendFormat": "blankScreenError",
-              "queryType": "range",
-              "refId": "blankScreenError"
-            }
-          ],
-          "title": "异常数量总览",
-          "type": "barchart"
-        },
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "bars",
-                "fillOpacity": 8,
-                "gradientMode": "opacity",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineStyle": {
-                  "fill": "solid"
-                },
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "always",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "decimals": 0,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "none"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 6,
-            "w": 12,
-            "x": 0,
-            "y": 50
-          },
-          "id": 3,
-          "links": [],
-          "options": {
-            "legend": {
-              "calcs": [
-                "sum"
-              ],
-              "displayMode": "table",
-              "placement": "right"
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "9.0.6",
-          "targets": [
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"blankScreenError\"} [$__interval])",
-              "legendFormat": "{{pageurl}}",
-              "queryType": "range",
-              "refId": "A"
-            }
-          ],
-          "title": "白屏异常",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "bars",
-                "fillOpacity": 8,
-                "gradientMode": "opacity",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineStyle": {
-                  "fill": "solid"
-                },
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "always",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "decimals": 0,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "none"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 6,
-            "w": 12,
-            "x": 12,
-            "y": 50
-          },
-          "id": 26,
-          "links": [],
-          "options": {
-            "legend": {
-              "calcs": [
-                "sum"
-              ],
-              "displayMode": "table",
-              "placement": "right"
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "9.0.6",
-          "targets": [
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"jsError\"} [$__interval])",
-              "legendFormat": "{{pageurl}}",
-              "queryType": "range",
-              "refId": "A"
-            }
-          ],
-          "title": "Javascript异常",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "bars",
-                "fillOpacity": 8,
-                "gradientMode": "opacity",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineStyle": {
-                  "fill": "solid"
-                },
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "always",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "decimals": 0,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "none"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 56
-          },
-          "id": 29,
-          "links": [],
-          "options": {
-            "legend": {
-              "calcs": [
-                "sum"
-              ],
-              "displayMode": "table",
-              "placement": "right"
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "9.0.6",
-          "targets": [
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"unhandledError\"} [$__interval])",
-              "legendFormat": "{{pageurl}}",
-              "queryType": "range",
-              "refId": "A"
-            }
-          ],
-          "title": "其他异常 (unhandled)",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "bars",
-                "fillOpacity": 8,
-                "gradientMode": "opacity",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineStyle": {
-                  "fill": "solid"
-                },
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "always",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "decimals": 0,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "none"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 6,
-            "w": 12,
-            "x": 0,
-            "y": 64
-          },
-          "id": 27,
-          "links": [],
-          "options": {
-            "legend": {
-              "calcs": [
-                "sum"
-              ],
-              "displayMode": "table",
-              "placement": "right"
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "9.0.6",
-          "targets": [
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"loadingError\"} [$__interval])",
-              "legendFormat": "{{pageurl}}",
-              "queryType": "range",
-              "refId": "A"
-            }
-          ],
-          "title": "页面加载异常",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "loki",
-            "uid": "PBDC956B9AC850F36"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "bars",
-                "fillOpacity": 8,
-                "gradientMode": "opacity",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "smooth",
-                "lineStyle": {
-                  "fill": "solid"
-                },
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "always",
-                "spanNulls": true,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "decimals": 0,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "none"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 6,
-            "w": 12,
-            "x": 12,
-            "y": 64
-          },
-          "id": 28,
-          "links": [],
-          "options": {
-            "legend": {
-              "calcs": [
-                "sum"
-              ],
-              "displayMode": "table",
-              "placement": "right"
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "9.0.6",
-          "targets": [
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"interfaceError\"} [$__interval])",
-              "legendFormat": "{{pageurl}}",
-              "queryType": "range",
-              "refId": "A"
-            }
-          ],
-          "title": "接口异常",
-          "type": "timeseries"
-        }
-      ],
+      "panels": [],
       "title": "异常统计",
       "type": "row"
     },
     {
-      "collapsed": true,
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
       "gridPos": {
-        "h": 1,
+        "h": 8,
         "w": 24,
         "x": 0,
         "y": 42
       },
-      "id": 25,
-      "panels": [
+      "id": 10,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 1,
+        "groupWidth": 0.6,
+        "legend": {
+          "calcs": [
+            "sum",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "orientation": "vertical",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        },
+        "xField": "Time",
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": -100
+      },
+      "pluginVersion": "9.0.6",
+      "targets": [
         {
           "datasource": {
             "type": "loki",
             "uid": "PBDC956B9AC850F36"
           },
-          "gridPos": {
-            "h": 12,
-            "w": 12,
-            "x": 0,
-            "y": 42
-          },
-          "id": 31,
-          "options": {
-            "dedupStrategy": "none",
-            "enableLogDetails": true,
-            "prettifyLogMessage": false,
-            "showCommonLabels": true,
-            "showLabels": false,
-            "showTime": true,
-            "sortOrder": "Descending",
-            "wrapLogMessage": false
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"jsError\"} | json | __error__=``",
-              "queryType": "range",
-              "refId": "A"
-            }
-          ],
-          "title": "jsError",
-          "type": "logs"
+          "editorMode": "builder",
+          "expr": "sum(count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"jsError\"} [$__interval]))",
+          "legendFormat": "jsError",
+          "queryType": "range",
+          "refId": "jsError"
         },
         {
           "datasource": {
             "type": "loki",
             "uid": "PBDC956B9AC850F36"
           },
-          "gridPos": {
-            "h": 12,
-            "w": 12,
-            "x": 12,
-            "y": 42
-          },
-          "id": 33,
-          "options": {
-            "dedupStrategy": "none",
-            "enableLogDetails": true,
-            "prettifyLogMessage": false,
-            "showCommonLabels": true,
-            "showLabels": false,
-            "showTime": true,
-            "sortOrder": "Descending",
-            "wrapLogMessage": false
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"loadingError\"} | json | __error__=``",
-              "queryType": "range",
-              "refId": "A"
-            }
-          ],
-          "title": "loadingError",
-          "type": "logs"
+          "editorMode": "builder",
+          "expr": "sum(count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"loadingError\"} [$__interval]))",
+          "hide": false,
+          "legendFormat": "loadingError",
+          "queryType": "range",
+          "refId": "loadingError"
         },
         {
           "datasource": {
             "type": "loki",
             "uid": "PBDC956B9AC850F36"
           },
-          "gridPos": {
-            "h": 12,
-            "w": 12,
-            "x": 0,
-            "y": 54
-          },
-          "id": 34,
-          "options": {
-            "dedupStrategy": "none",
-            "enableLogDetails": true,
-            "prettifyLogMessage": false,
-            "showCommonLabels": true,
-            "showLabels": false,
-            "showTime": true,
-            "sortOrder": "Descending",
-            "wrapLogMessage": false
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"unhandledError\"} | json | __error__=``",
-              "queryType": "range",
-              "refId": "A"
-            }
-          ],
-          "title": "unhandledError",
-          "type": "logs"
+          "editorMode": "builder",
+          "expr": "sum(count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"unhandledError\"} [$__interval]))",
+          "hide": false,
+          "legendFormat": "unhandledError",
+          "queryType": "range",
+          "refId": "unhandledError"
         },
         {
           "datasource": {
             "type": "loki",
             "uid": "PBDC956B9AC850F36"
           },
-          "gridPos": {
-            "h": 12,
-            "w": 12,
-            "x": 12,
-            "y": 54
+          "editorMode": "builder",
+          "expr": "sum(count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"interfaceError\"} [$__interval]))",
+          "hide": false,
+          "legendFormat": "interfaceError",
+          "queryType": "range",
+          "refId": "interfaceError"
+        },
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
           },
-          "id": 32,
-          "options": {
-            "dedupStrategy": "none",
-            "enableLogDetails": true,
-            "prettifyLogMessage": false,
-            "showCommonLabels": true,
-            "showLabels": false,
-            "showTime": true,
-            "sortOrder": "Descending",
-            "wrapLogMessage": false
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "loki",
-                "uid": "PBDC956B9AC850F36"
-              },
-              "editorMode": "builder",
-              "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"interfaceError\"} | json | __error__=``",
-              "queryType": "range",
-              "refId": "A"
-            }
-          ],
-          "title": "interfaceError",
-          "type": "logs"
+          "editorMode": "builder",
+          "expr": "sum(count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"blankScreenError\"} [$__interval]))",
+          "hide": false,
+          "legendFormat": "blankScreenError",
+          "queryType": "range",
+          "refId": "blankScreenError"
         }
       ],
+      "title": "异常数量总览",
+      "type": "barchart"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 8,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 50
+      },
+      "id": 3,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.0.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "builder",
+          "expr": "count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"blankScreenError\"} [$__interval])",
+          "legendFormat": "{{pageurl}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "白屏异常",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 8,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 50
+      },
+      "id": 26,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.0.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "builder",
+          "expr": "count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"jsError\"} [$__interval])",
+          "legendFormat": "{{pageurl}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Javascript异常",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 8,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 56
+      },
+      "id": 29,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.0.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "builder",
+          "expr": "count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"unhandledError\"} [$__interval])",
+          "legendFormat": "{{pageurl}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "其他异常 (unhandled)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 8,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 64
+      },
+      "id": 27,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.0.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "builder",
+          "expr": "count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"loadingError\"} [$__interval])",
+          "legendFormat": "{{pageurl}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "页面加载异常",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 8,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "always",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 64
+      },
+      "id": 28,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.0.6",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "builder",
+          "expr": "count_over_time({job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"interfaceError\"} [$__interval])",
+          "legendFormat": "{{pageurl}}",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "接口异常",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 70
+      },
+      "id": 25,
+      "panels": [],
       "title": "日志查询",
       "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 71
+      },
+      "id": 31,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": true,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "builder",
+          "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"jsError\"} | json | __error__=``",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "jsError",
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 71
+      },
+      "id": 33,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": true,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "builder",
+          "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"loadingError\"} | json | __error__=``",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "loadingError",
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 0,
+        "y": 83
+      },
+      "id": 34,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": true,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "builder",
+          "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"unhandledError\"} | json | __error__=``",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "unhandledError",
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "PBDC956B9AC850F36"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 12,
+        "x": 12,
+        "y": 83
+      },
+      "id": 32,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": true,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "PBDC956B9AC850F36"
+          },
+          "editorMode": "builder",
+          "expr": "{job=\"epimetheus-metric\", reportid=\"$reportid\", type=\"interfaceError\"} | json | __error__=``",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "interfaceError",
+      "type": "logs"
     }
   ],
   "refresh": false,
@@ -1481,6 +1473,6 @@
   "timezone": "",
   "title": "reportid-sample",
   "uid": "BOIiq_i4k",
-  "version": 29,
+  "version": 30,
   "weekStart": ""
 }
