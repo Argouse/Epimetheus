@@ -1,0 +1,41 @@
+version: '3'
+services:
+  loki:
+    image: grafana/loki:latest
+    hostname: loki
+    volumes:
+      - loki_data:/loki
+      - ./loki/loki-docker-config.yml:/etc/loki/loki-docker-config.yml
+    command: 
+      - '--config.file=/etc/loki/loki-docker-config.yml'
+    restart: always
+  grafana:
+    image: grafana/grafana:latest
+    hostname: grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+    depends_on:
+      - loki
+    ports:
+      - '3000:${GRAFANA_PORT}'
+    restart: always
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    environment:
+      - REPORT_ID=${REPORT_ID}
+    depends_on:
+      - loki
+    ports:
+      - '3002:${EPIMETHEUS_PORT}'
+    restart: always
+
+volumes:
+  loki_data: {}
+  grafana_data: {}
