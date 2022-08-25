@@ -1,4 +1,3 @@
-const config = require('../config/config.js');
 const winston = require('winston')
 const LokiTransport = require("winston-loki");
 
@@ -6,7 +5,7 @@ const logger = winston.createLogger({
   format: winston.format.json(),
   transports: [
     new LokiTransport({
-      host: config.loki.url,
+      host: process.env.LOKI_URL || 'http://localhost:3100',
       json: true,
       labels: { job: 'epimetheus-replay' }
     })

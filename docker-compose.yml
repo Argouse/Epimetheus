@@ -26,14 +26,17 @@ services:
     ports:
       - '3000:3000'
     restart: always
-  # app:
-  #   build:
-  #     context: ./app
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - '8080:8080'
-  #   command: 'index.js'
-  #   restart: always
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    environment:
+      - REPORT_ID=${REPORT_ID}
+    depends_on:
+      - loki
+    ports:
+      - '3002:${EPIMETHEUS_PORT}'
+    restart: always
 
 volumes:
   loki_data: {}
