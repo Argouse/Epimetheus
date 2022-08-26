@@ -39,7 +39,7 @@ Here are the other commands you might need to control the service:
 - `sudo docker-compose down` # stop the docker-cluster
 
 ## Config with ArgouseSDK
-Backend service url is `http://localhost:3002/metrics/report` by default, which is the same as the one in the ArgouseSDK.
+Backend service url is `http://localhost:3002` by default, which is the same as the one in the ArgouseSDK.
 
 Then you can login to the dashboard at http://localhost:3000/ , default username is `admin`, password is set in .env file.
 
@@ -61,3 +61,10 @@ sudo docker-compose up --build
 
 ## Contributing
 Please feel free to fork and submit pull requests!
+
+## Preview
+![grafana_img_1](doc/demo/grafana_1.jpg)
+![grafana_img_2](doc/demo/grafana_2.jpg)
+![grafana_img_3](doc/demo/grafana_3.jpg)
+![grafana_img_4](doc/demo/grafana_4.jpg)
+![grafana_img_5](doc/demo/grafana_5.jpg)
