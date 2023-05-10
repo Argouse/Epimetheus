@@ -24,7 +24,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 7,
+  "id": 4,
+  "iteration": 1683725924659,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -312,7 +313,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -565,7 +566,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -650,16 +651,29 @@
           "custom": {
             "axisLabel": "",
             "axisPlacement": "auto",
-            "fillOpacity": 80,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
+            "lineInterpolation": "linear",
             "lineWidth": 1,
+            "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
           },
           "decimals": 0,
@@ -668,7 +682,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -687,9 +702,6 @@
       },
       "id": 10,
       "options": {
-        "barRadius": 0,
-        "barWidth": 1,
-        "groupWidth": 0.6,
         "legend": {
           "calcs": [
             "sum",
@@ -698,18 +710,11 @@
           "displayMode": "table",
           "placement": "right"
         },
-        "orientation": "vertical",
-        "showValue": "auto",
-        "stacking": "none",
         "tooltip": {
-          "mode": "multi",
-          "sort": "none"
-        },
-        "xField": "Time",
-        "xTickLabelRotation": 0,
-        "xTickLabelSpacing": -100
+          "mode": "single"
+        }
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "8.3.3",
       "targets": [
         {
           "datasource": {
@@ -772,7 +777,7 @@
         }
       ],
       "title": "异常数量总览",
-      "type": "barchart"
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -822,7 +827,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -920,7 +926,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1018,7 +1025,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1116,7 +1124,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1214,7 +1223,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1427,7 +1437,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 36,
+  "schemaVersion": 34,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -1473,6 +1483,6 @@
   "timezone": "",
   "title": "reportid-sample",
   "uid": "BOIiq_i4k",
-  "version": 30,
+  "version": 1,
   "weekStart": ""
 }
