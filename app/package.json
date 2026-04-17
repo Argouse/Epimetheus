@@ -15,6 +15,6 @@
     "cors": "^2.8.5",
     "express": "^4.22.1",
     "winston": "^3.8.1",
-    "winston-loki": "^6.0.5"
+    "winston-loki": "^6.1.4"
   }
 }
